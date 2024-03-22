@@ -1,0 +1,143 @@
+/* ----- General ----- */
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #f5f5f5;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+header {
+    background-color: #575756;
+    color: #eee;
+    padding: 1px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1, h2 {
+    font-family: 'Rubik Doodle Shadow', cursive;
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    font-family: 'Rubik Scribble', cursive;
+}
+
+main {
+    padding: 20px 10% 20px 10%; /* top, right, bottom, left */
+    min-height: 100%;
+}
+
+.media-flex {
+    display: flex;
+    align-items: center;
+}
+
+
+/* ----- Images ----- */
+img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+    width: auto;
+    height: 50px;
+}
+
+.dice {
+    display: flex;
+    justify-content: space-around;
+}
+
+.self, .computer {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+button{
+    border-radius: 5px;
+    background-color: #575756;
+    color:#f5f5f5;
+    border:solid 2px;
+    font-weight:bold;
+    padding:5px;
+    text-align: center;
+}
+
+button:hover{
+    border:solid 2px #fc6;
+    background-color: #f5f5f5;
+    color:#575756;
+    cursor:pointer;
+    transform: scale(1.1);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+}
+
+/* ----- Links ----- */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:visited {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+a:hover {
+    font-weight: bold;
+    color: #fc6;
+    text-decoration: none;
+}
+
+a:active {
+    font-weight: bold;
+    color: #fc6;
+    text-decoration: underline;
+}
+
+
+/* ----- Footer ----- */
+footer {
+    background-color: #eee;
+    color: #333;
+    padding: 20px;
+    margin-top: auto;  
+}
+
+
+/* ----- Responsive Layout ----- */
+@media screen and (max-width: 1120px) {
+    .media-flex {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 20px 10% 20px 10%; /* top, right, bottom, left */
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        padding: 20px 5% 20px 5%; /* Adjust padding for smaller screens */
+        width: auto;
+    }
+}
