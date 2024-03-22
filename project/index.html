@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- author: Ruochen You -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>COMP2132 Project</title>
+        <!-- CSS link --> <!--  apply styles -->
+        <link rel="stylesheet" href="css/style.css">
+        <!-- Google Fonts Links -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik+Doodle+Shadow&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik+Scribble&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit&display=swap">
+        <!--  apply javascript -->
+        <script src="scripts/jquery-3.7.0.min.js" defer></script> 
+        <script src="scripts/project.js" defer></script>
+    </head>
+
+    <body>
+        <header>
+            <h1>Project - Dice Game</h1>
+        </header>
+
+        <main>
+
+            <div class="container">
+                <div class="game-info">
+                    <h2>How to play</h2>
+                    <p>
+                        The game is simple. Click the "Roll Dice" button to roll the dice. To advance to the next round, click the "Roll Dice" button again. After three rounds, the game will display your final score. If you want to play again, click the "New Game" button or refresh the page.
+                    </p>
+                    <h2>Rules</h2>
+                    <p>
+                        Each round, you and the computer both roll two dices. The sum of the two dice will be added to your score. If you roll doubles then your score is multiplied by 2 (e.g. a 6 and a 6 then your score is 24 points). Rolling a 1 will give you a score of 0 for that round. The player with the highest score after three rounds wins.
+                    </p>
+                </div>
+                <div class="dice">
+                    <div class="self">
+                        <img src="images/dice-six-faces-one.png" alt="dice-six-faces-one">
+                        <img src="images/dice-six-faces-one.png" alt="dice-six-faces-one">
+                    </div>
+                    <div class="computer">
+                        <img src="images/dice-six-faces-one.png" alt="dice-six-faces-one">
+                        <img src="images/dice-six-faces-one.png" alt="dice-six-faces-one">
+                    </div>
+                </div>
+                <div class="controls">
+                    <button id="roll-btn">Roll Dice</button>
+                    <button id="reset-btn">New Game</button>
+                </div>
+            </div>
+            
+        </main>
+
+        <footer>
+            <p>
+                Website designed by Ruochen You (<a href="mailto:youruochen17@gmail.com">Send Email</a>) for COMP2132.<br>
+                All rights reserved.<br>
+                <a href="#TOP">[ Top ]</a>
+            </p>
+        </footer>
+    </body>
+</html>
