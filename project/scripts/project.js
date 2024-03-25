@@ -1,3 +1,38 @@
+let images = ['images/dice-six-faces-1.png', 
+'images/dice-six-faces-2.png', 
+'images/dice-six-faces-3.png', 
+'images/dice-six-faces-4.png', 
+'images/dice-six-faces-5.png', 
+'images/dice-six-faces-6.png'];
+
+let dice = document.querySelectorAll('img');
+
+function roll() {
+    dice.forEach(function(die) {
+        die.classList.add('shake');
+    });
+    setTimeout(function() {
+        dice.forEach(function(die) {
+            die.classList.remove('shake');
+        });
+        let dieOne = Math.floor(Math.random() * 6);
+        let dieTwo = Math.floor(Math.random() * 6);
+        document.querySelector('.dice .self').innerHTML = `<img src="${images[dieOne]}" alt="dice-${dieOne + 1}">`;
+        document.querySelector('.dice .computer').innerHTML = `<img src="${images[dieTwo]}" alt="dice-${dieTwo + 1}">`;
+        
+        let playerScore = dieOne + 1;
+        let computerScore = dieTwo + 1;
+        if (playerScore > computerScore) {
+            document.querySelector('.game-info').innerHTML = '<h2>You win!</h2>';
+        } else if (playerScore < computerScore) {
+            document.querySelector('.game-info').innerHTML = '<h2>Computer wins!</h2>';
+        } else {
+            document.querySelector('.game-info').innerHTML = '<h2>It\'s a tie!</h2>';
+        }
+    }, 1000);
+}
+
+
 // Function to generate a random number between 1 and 6 (inclusive)
 function rollDice() {
     return Math.floor(Math.random() * 6) + 1;
@@ -43,19 +78,27 @@ function resetGame() {
 
 // Event listener for roll button
 document.getElementById('roll-btn').addEventListener('click', function() {
-    // Roll dice for player and computer
-    const playerDie1 = rollDice();
-    const playerDie2 = rollDice();
-    const computerDie1 = rollDice();
-    const computerDie2 = rollDice();
+    dice.forEach(function(die) {
+        die.classList.add('shake');
+    });
+    setTimeout(function() {
+        dice.forEach(function(die) {
+            die.classList.remove('shake');
+        });
+        // Roll dice for player and computer
+        const playerDice1 = rollDice();
+        const playerDice2 = rollDice();
+        const computerDice1 = rollDice();
+        const computerDice2 = rollDice();
 
-    // Calculate scores
-    const playerScore = calculateScore(playerDie1, playerDie2);
-    const computerScore = calculateScore(computerDie1, computerDie2);
+        // Calculate scores
+        const playerScore = calculateScore(playerDice1, playerDice2);
+        const computerScore = calculateScore(computerDice1, computerDice2);
 
-    // Update UI
-    updateDiceImages(playerDie1, playerDie2, computerDie1, computerDie2);
-    updateGameInfo(playerScore, computerScore);
+        // Update UI
+        updateDiceImages(playerDice1, playerDice2, computerDice1, computerDice2);
+        updateGameInfo(playerScore, computerScore);
+    }, 1000);
 });
 
 // Event listener for reset button
