@@ -11,34 +11,33 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik+Doodle+Shadow&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik+Scribble&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit&display=swap">
-    <!--  apply javascript -->
-    <script src="scripts/jquery-3.7.0.min.js" defer></script> 
+    <!--  apply javascript --> 
     <script src="scripts/project.js" defer></script>
 </head>
 
 <body>
     <header>
-        <h1>Project - Dice Game</h1>
+        <h1><a href="index.html">Project - Dice Game</a></h1>
     </header>
 
-    <main>
+    <main class="media-flex">
+        <div class="game-info">
+            <h2>How to play</h2>
+            <p>
+                The game is simple. Click the "Roll Dice" button to roll the dice. To advance to the next round, click the "Roll Dice" button again. After three rounds, the game will display your final score. If you want to play again, click the "New Game" button or refresh the page.
+            </p>
+            <h2>Rules</h2>
+            <p>
+                Each round, you and the computer both roll two dices. The sum of the two dice will be added to your score. If you roll doubles then your score is multiplied by 2 (e.g. a 6 and a 6 then your score is 24 points). Rolling a 1 will give you a score of 0 for that round. The player with the highest score after three rounds wins.
+            </p>
+        </div>
 
         <div class="container">
-            <div class="game-info">
-                <h2>How to play</h2>
-                <p>
-                    The game is simple. Click the "Roll Dice" button to roll the dice. To advance to the next round, click the "Roll Dice" button again. After three rounds, the game will display your final score. If you want to play again, click the "New Game" button or refresh the page.
-                </p>
-                <h2>Rules</h2>
-                <p>
-                    Each round, you and the computer both roll two dices. The sum of the two dice will be added to your score. If you roll doubles then your score is multiplied by 2 (e.g. a 6 and a 6 then your score is 24 points). Rolling a 1 will give you a score of 0 for that round. The player with the highest score after three rounds wins.
-                </p>
-            </div>
             <div class="dice">
                 <div>
                     <div class="self">
                         <img src="images/dice-six-faces-1.png" alt="dice-six-faces-1">
-                        <img src="images/dice-six-faces-6.png" alt="dice-six-faces-1">
+                        <img src="images/dice-six-faces-6.png" alt="dice-six-faces-6">
                     </div>
                     <!-- <label for="userName">User Name:</label>
                     <input type="text" id="userName" name="userName">
@@ -48,7 +47,7 @@
                 <div>
                     <div class="computer">
                         <img src="images/dice-six-faces-1.png" alt="dice-six-faces-1">
-                        <img src="images/dice-six-faces-6.png" alt="dice-six-faces-1">
+                        <img src="images/dice-six-faces-6.png" alt="dice-six-faces-6">
                     </div>
                     <!-- <p>Computer</p>
                     <p id="computer-score">Score: 0</p>
@@ -56,6 +55,8 @@
                 </div>
                 
             </div>
+            <div id="score"></div>
+            <div id="round-info"></div>
             <div class="controls">
                 <button id="roll-btn">Roll Dice</button>
                 <button id="reset-btn">New Game</button>

@@ -1,3 +1,5 @@
+/* ----- SASS variables ----- */
+/* ----- SASS mxins ----- */
 /* ----- General ----- */
 html {
   height: 100%;
@@ -31,10 +33,15 @@ h1, h2 {
   font-family: "Rubik Doodle Shadow", cursive;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 h3 {
   font-family: "Rubik Scribble", cursive;
+}
+
+p {
+  margin: 25px 0;
 }
 
 main {
@@ -45,6 +52,7 @@ main {
 .media-flex {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 /* ----- Images ----- */
@@ -66,6 +74,7 @@ img {
 .dice {
   width: 400px;
   padding: 50px;
+  margin: 25px 0;
   box-shadow: 0 15px 35px rgba(50, 50, 50, 0.2);
   background-color: #ffffff;
   border-radius: 8px;
@@ -104,6 +113,7 @@ button:hover {
 .controls {
   display: flex;
   justify-content: center;
+  padding: 25px;
 }
 
 .shake {
