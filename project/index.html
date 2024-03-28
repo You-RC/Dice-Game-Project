@@ -36,27 +36,31 @@
             <div class="dice">
                 <div>
                     <div class="self">
-                        <img src="images/dice-six-faces-1.png" alt="dice-six-faces-1">
-                        <img src="images/dice-six-faces-6.png" alt="dice-six-faces-6">
+                        <img src="images/dice-six-faces-1.png" alt="dice-six-faces-1" id="dice-1">
+                        <img src="images/dice-six-faces-6.png" alt="dice-six-faces-6" id="dice-2">
                     </div>
-                    <!-- <label for="userName">User Name:</label>
-                    <input type="text" id="userName" name="userName">
-                    <p id="player-score">Score: 0</p>
-                    <p id="player-total-score">Total Score: 0</p> -->
                 </div>
                 <div>
                     <div class="computer">
-                        <img src="images/dice-six-faces-1.png" alt="dice-six-faces-1">
-                        <img src="images/dice-six-faces-6.png" alt="dice-six-faces-6">
+                        <img src="images/dice-six-faces-1.png" alt="dice-six-faces-1" id="dice-3">
+                        <img src="images/dice-six-faces-6.png" alt="dice-six-faces-6" id="dice-4">
                     </div>
-                    <!-- <p>Computer</p>
-                    <p id="computer-score">Score: 0</p>
-                    <p id="computer-total-score">Total Score: 0</p> -->
-                </div>
-                
+                </div> 
             </div>
+
+            <div class="names">
+                <h3>Player</h3>
+                <h3>Computer</h3>
+            </div>
+            
             <div id="score"></div>
             <div id="round-info"></div>
+
+            <!-- Winner Popup -->
+            <div class="popup" id="popup">
+                <div class="popup-content"></div>
+            </div>
+             
             <div class="controls">
                 <button id="roll-btn">Roll Dice</button>
                 <button id="reset-btn">New Game</button>

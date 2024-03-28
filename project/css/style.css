@@ -51,8 +51,8 @@ main {
 
 .media-flex {
   display: flex;
-  align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 /* ----- Images ----- */
@@ -78,6 +78,14 @@ img {
   box-shadow: 0 15px 35px rgba(50, 50, 50, 0.2);
   background-color: #ffffff;
   border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.names {
+  width: 400px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -131,6 +139,32 @@ button:hover {
     transform: rotate(8deg);
   }
 }
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 40%;
+}
+
+#close-btn {
+  text-align: center;
+}
+
 /* ----- Links ----- */
 a {
   color: inherit;
@@ -165,9 +199,6 @@ footer {
 /* ----- Responsive Layout ----- */
 @media screen and (max-width: 1120px) {
   .media-flex {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     padding: 20px 10% 20px 10%; /* top, right, bottom, left */
     width: auto;
   }

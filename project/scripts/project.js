@@ -11,32 +11,6 @@ let round = 0;
 let playerTotalScore = 0;
 let computerTotalScore = 0;
 
-// function roll() {
-//     dice.forEach(function(die) {
-//         die.classList.add('shake');
-//     });
-//     setTimeout(function() {
-//         dice.forEach(function(die) {
-//             die.classList.remove('shake');
-//         });
-//         let dieOne = Math.floor(Math.random() * 6);
-//         let dieTwo = Math.floor(Math.random() * 6);
-//         document.querySelector('.dice .self').innerHTML = `<img src="${images[dieOne]}" alt="dice-${dieOne + 1}">`;
-//         document.querySelector('.dice .computer').innerHTML = `<img src="${images[dieTwo]}" alt="dice-${dieTwo + 1}">`;
-        
-//         let playerScore = dieOne + 1;
-//         let computerScore = dieTwo + 1;
-//         if (playerScore > computerScore) {
-//             document.querySelector('.game-info').innerHTML = '<h2>You win!</h2>';
-//         } else if (playerScore < computerScore) {
-//             document.querySelector('.game-info').innerHTML = '<h2>Computer wins!</h2>';
-//         } else {
-//             document.querySelector('.game-info').innerHTML = '<h2>It\'s a tie!</h2>';
-//         }
-//     }, 1000);
-// }
-
-
 // Function to generate a random number between 1 and 6 (inclusive)
 function rollDice() {
     return Math.floor(Math.random() * 6) + 1;
@@ -53,31 +27,13 @@ function calculateScore(dice1, dice2) {
     }
 }
 
-// Function to update the UI with dice images
-function updateDiceImages(playerDice1, playerDice2, computerDice1, computerDice2) {
-
-
-    dice.forEach(function(die) {
-        die.classList.remove('shake');
-    });
-    document.querySelector('.dice .self').innerHTML = `
-        <img src="${images[playerDice1 - 1]}" alt="dice-${playerDice1}">
-        <img src="${images[playerDice2 - 1]}" alt="dice-${playerDice2}">
-    `;
-    document.querySelector('.dice .computer').innerHTML = `
-        <img src="${images[computerDice1 - 1]}" alt="dice-${computerDice1}">
-        <img src="${images[computerDice2 - 1]}" alt="dice-${computerDice2}">
-    `;
-
-}
-
 // Function to update the game information
 function updateGameInfo(playerScore, computerScore) {
     round++;
     playerTotalScore += playerScore;
     computerTotalScore += computerScore;
     document.getElementById('round-info').innerHTML += `
-        <p>Round ${round}: Player Score - ${playerScore}, Computer Score - ${computerScore}</p>
+        <p>Round ${round}: Player Score is ${playerScore}, Computer Score is ${computerScore}</p>
     `;
     document.getElementById('score').innerHTML = `
         <h2>Player Total Score: ${playerTotalScore}</h2>
@@ -95,44 +51,80 @@ function resetGame() {
     document.getElementById('round-info').innerHTML = '';
     document.getElementById('score').innerHTML = '';
 
-    document.querySelector('.dice .self').innerHTML = `
-        <img src="images/dice-six-faces-1.png" alt="dice-six-faces-1">
-        <img src="images/dice-six-faces-6.png" alt="dice-six-faces-6">
-    `;
-    document.querySelector('.dice .computer').innerHTML = `
-    <img src="images/dice-six-faces-1.png" alt="dice-six-faces-1">
-    <img src="images/dice-six-faces-6.png" alt="dice-six-faces-6">
-    `;
+    // Reset dice images
+    document.querySelector('#dice-1').setAttribute("src", "images/dice-six-faces-1.png");
+    document.querySelector('#dice-2').setAttribute("src", "images/dice-six-faces-6.png");
+    document.querySelector('#dice-3').setAttribute("src", "images/dice-six-faces-1.png");
+    document.querySelector('#dice-4').setAttribute("src", "images/dice-six-faces-6.png");
+
+    document.getElementById('roll-btn').disabled = false;
     
+}
+
+// Function to add shake animation class to dice elements
+function addShakeAnimation() {
+    dice.forEach(function(die) {
+        die.classList.add('shake');
+    });
+}
+
+// Function to remove shake animation class from dice elements
+function removeShakeAnimation() {
+    dice.forEach(function(die) {
+        die.classList.remove('shake');
+    });
+}
+
+let isAnimating = false;
+
+// Show popup with winner information
+function showWindow(winner) {
+    if (!isAnimating) {
+        const popup = document.getElementById('popup');
+        const popupContent = document.querySelector('.popup-content');
+        popupContent.innerHTML = `<h2>Winner: ${winner}</h2> 
+        <div id="close-btn"><button>Close</button></div>`;
+        setTimeout(function() {
+            popup.style.opacity = '1';
+        }, 100);
+        popup.style.visibility = 'visible';
+
+        // Add event listener to the close button
+        const closeBtn = document.getElementById('close-btn');
+        closeBtn.addEventListener('click', function() {
+            popup.style.opacity = 0;
+            setTimeout(function() {
+                popup.style.visibility = 'hidden';
+            }, 500);
+        });
+    }
 }
 
 // Event listener for roll button
 document.getElementById('roll-btn').addEventListener('click', function() {
-
-    // Add shake animation class to dice elements
-    dice.forEach(function(die) {
-        die.classList.add('shake');
-    });
-
+    
     // Roll dice for player and computer
     const playerDice1 = rollDice();
     const playerDice2 = rollDice();
     const computerDice1 = rollDice();
     const computerDice2 = rollDice();
 
-    // Calculate scores
-    const playerScore = calculateScore(playerDice1, playerDice2);
-    const computerScore = calculateScore(computerDice1, computerDice2);
+    // Add shake animation class to dice elements
+    addShakeAnimation();
 
-    // Update UI after a short delay to trigger shake animation
     setTimeout(function() {
-        // Remove shake animation class from dice elements
-        dice.forEach(function(die) {
-            die.classList.remove('shake');
-        });
+        
+        removeShakeAnimation();
 
-        // Update UI with dice images and game info
-        updateDiceImages(playerDice1, playerDice2, computerDice1, computerDice2);
+        document.querySelector('#dice-1').setAttribute("src", images[playerDice1 - 1]);
+        document.querySelector('#dice-2').setAttribute("src", images[playerDice2 - 1]);
+        document.querySelector('#dice-3').setAttribute("src", images[computerDice1 - 1]);
+        document.querySelector('#dice-4').setAttribute("src", images[computerDice2 - 1]);
+
+        // Calculate scores
+        const playerScore = calculateScore(playerDice1, playerDice2);
+        const computerScore = calculateScore(computerDice1, computerDice2);
+
         updateGameInfo(playerScore, computerScore);
 
         // Check if all rounds are completed
@@ -147,18 +139,19 @@ document.getElementById('roll-btn').addEventListener('click', function() {
                 winner = 'It\'s a tie';
             }
             // Display the winner
-            document.getElementById('round-info').innerHTML += `
-                <p>Winner: ${winner}</p>
-            `;
-
+            // document.getElementById('round-info').innerHTML += `
+            //     <h2>Winner: ${winner}</h2>
+            // `;
+            showWindow(winner);
             // Disable roll button after third round
             document.getElementById('roll-btn').disabled = true;
         }
-    }, 1000); 
+
+    }, 1000);
+  
 });
 
 // Event listener for reset button
 document.getElementById('reset-btn').addEventListener('click', function() {
     resetGame();
-    document.getElementById('roll-btn').disabled = false;
 });
